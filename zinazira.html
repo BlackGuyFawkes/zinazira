@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZinaZira Logistics | Smart Fleet, Passenger & E-Commerce Solutions</title>
+    <style>
+        /* Modern Design System & CSS Variables */
+        :root {
+            --primary: #0f172a;       /* Deep slate/black */
+            --secondary: #1e293b;     /* Slate blue */
+            --accent: #06b6d4;        /* Tech cyan */
+            --accent-hover: #0891b2;  /* Darker cyan */
+            --text-main: #334155;     /* Charcoal body text */
+            --text-light: #f8fafc;    /* Soft white */
+            --bg-light: #f1f5f9;      /* Light gray background */
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--primary) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s ease !important;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* TRUE EDGE-TO-EDGE HERO PAGE */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.85)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            height: 100vh;
+            width: 100%;
+            max-width: none !important; /* Breaks out of regular section limits */
+            margin: 0 !important;       /* Removes standard section framing */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding-top: 60px; /* Accounts for fixed nav placement */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Standard Inset Layout for Content Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        /* Responsive Grid Services Layout (Adaptive for 4 cards) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Ensures all 4 tabs align perfectly on a single line on desktop screens (>=1024px) */
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Full Width Section Callout */
+        .ops-showcase {
+            background-color: var(--bg-light);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 5rem 2rem;
+        }
+
+        .ops-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ops-text h2 {
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .ops-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .ops-features li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .ops-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .ops-visual {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: var(--card-shadow);
+        }
+
+        .panel-line {
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .status-active {
+            color: #4ade80;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+
+        /* Contact Form Layout */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background-color: #fff;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Success Message Area */
+        .toast-message {
+            display: none;
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: #94a3b8;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid #334155;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-info {
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .ops-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">ZinaZira<span>Logistics</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tech">Our Tech</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="cta-btn">Get a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- FULL EDGE-TO-EDGE HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Intelligent Logistics.<br>Seamless E-Commerce.</h1>
+            <p>Based in Montreal, ZinaZira Logistics integrates real-time control room data streams with advanced last-mile infrastructure to keep your business moving ahead of schedule.</p>
+            <a href="#contact" class="cta-btn" style="padding: 1rem 2rem; font-size: 1.1rem; text-decoration: none;">Partner with Us</a>
+        </div>
+    </section>
+
+    <!-- Core Services Section (Now featuring passenger transport in a 4-card grid) -->
+    <section id="services">
+        <h2 class="section-title">Core <span>Capabilities</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>North American Freight</h3>
+                <p>ZinaZira Logistics provides comprehensive freight solutions tailored to the speed of modern commerce. Whether you require Less-Than-Truckload (LTL) pallet shipping or Full Truckload (FTL) logistics, our network spans the entirety of Canada and the United States.</p>
+            </div>
+            <div class="card">
+                <h3>Live Control Room Monitoring</h3>
+                <p>Every ZinaZira vehicle features integrated tracking and encrypted driver communication. Monitored 24/7 from our specialized dispatch hub, this live telemetry stream ensures unmatched route precision, rapid response times, and absolute transparency.</p>
+            </div>
+            <div class="card">
+                <h3>Every Shipment. Always Connected.</h3>
+                <p>From single-pallet local deliveries to cross-border truckloads, our fleet is fully adaptable. Utilizing specialized Dry Van, Temp-Controlled (Refrigerated/Protect-from-Freeze), and Flatbed assets to match your exact shipping specifications.</p>
+            </div>
+            <!-- Added Core Capability: Passenger Transport -->
+            <div class="card">
+                <h3>Premium Passenger Transport</h3>
+                <p>Expanding into high-standard team mobility. We offer corporate shuttle contracts, luxury passenger transits, and specialized group logistics monitored 24/7. Fully synchronized with our live control room, ensuring unparalleled schedule compliance and passenger safety.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovative Infrastructure Callout -->
+    <div class="ops-showcase" id="tech">
+        <div class="ops-container">
+            <div class="ops-text">
+                <h2>Next-Generation Fleet Monitoring</h2>
+                <p>We eliminate supply chain blind spots by replacing passive logs with active, connected tracking environments.</p>
+                <ul class="ops-features">
+                    <li>Real-time telemetry and encrypted in-cab driver communication devices.</li>
+                    <li>Predictive scheduling algorithms built to bypass extreme Canadian winter disruptions.</li>
+                    <li>Innovative urban micro-hub structures utilizing eco-conscious last-mile cargo assets.</li>
+                </ul>
+            </div>
+            <div class="ops-visual">
+                <div class="panel-line"><span>[ZINAZIRA LOGISTICS LIVE TELEMETRY]</span> <span class="status-active">● ONLINE</span></div>
+                <div class="panel-line"><span>-----------------------------------------</span></div>
+                <div class="panel-line"><span>ACTIVE VEHICLES IN FLEET:</span> <span>18 / 18</span></div>
+                <div class="panel-line"><span>PASSENGER SHUTTLE TRANSITS:</span> <span style="color: #4ade80;">ACTIVE (4 RUNNING)</span></div>
+                <div class="panel-line"><span>ROUTE STATUS (A-40 CORRIDOR):</span> <span style="color: #4ade80;">CLEAR</span></div>
+                <div class="panel-line"><span>MONITORING REFRESH RATE:</span> <span>0.4s</span></div>
+                <div class="panel-line"><span>CONTROL ROOM COMMS LINK:</span> <span style="color: #4ade80;">SECURE</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Lead Generation Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Request a <span>Proposal</span></h2>
+        <div class="contact-container">
+            <div class="toast-message" id="formSuccessToast">
+                Thank you for contacting ZinaZira Logistics. Our Montreal dispatch and coordination team has received your details and will reach out with a personalized proposal within 2 business hours.
+            </div>
+            <form id="quoteRequestForm" onsubmit="handleFormSubmission(event)">
+                <div class="form-group">
+                    <label for="name">Company Name / Contact Person</label>
+                    <input type="text" id="name" required placeholder="Your Company Ltd.">
+                </div>
+                <div class="form-group">
+                    <label for="email">Business Email Address</label>
+                    <input type="email" id="email" required placeholder="name@yourcompany.com">
+                </div>
+                <div class="form-group">
+                    <label for="service-type">Primary Service Needed</label>
+                    <select id="service-type" required>
+                        <option value="" disabled selected>Select a Service</option>
+                        <option value="freight">North American Cargo Freight (FTL/LTL)</option>
+                        <option value="passenger">Premium Passenger Transport</option>
+                        <option value="ecommerce">E-Commerce & Warehousing Fulfillment</option>
+                        <option value="custom">Custom Hybrid Logistics Integration</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Scope / Operational Requirements</label>
+                    <textarea id="message" rows="5" required placeholder="Describe your passenger count, cargo volumes, or regular route timelines..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Information -->
+    <footer>
+        <p>&copy; 2026 ZinaZira Logistics Inc. All rights reserved.</p>
+        <div class="footer-info">
+            <p>Headquarters: Montreal, QC, Canada &bull; info@zinazira.com</p>
+            <p>Operation Hours: Monday - Sunday (24/7 Monitored Dispatch)</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    // Initialize EmailJS
+    emailjs.init("R3WJbPkalDyRzA3tk");
+
+    function handleFormSubmission(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const service = document.getElementById('service-type').value;
+        const message = document.getElementById('message').value;
+
+        const submitButton = document.querySelector('.submit-btn');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+
+        emailjs.send(
+            "service_adyc8k9",
+            "template_9kk9s49",
+            {
+                to_email: "mail4chika@gmail.com",
+                from_name: name,
+                from_email: email,
+                service_type: service,
+                message: message
+            }
+        )
+        .then(function () {
+            const toast = document.getElementById('formSuccessToast');
+
+            toast.style.display = 'block';
+            toast.innerHTML =
+                'Thank you for contacting ZinaZira Logistics. Our Montreal dispatch and coordination team has received your request and will contact you shortly.';
+
+            document.getElementById('quoteRequestForm').reset();
+
+            toast.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        })
+        .catch(function (error) {
+            console.error('EmailJS Error:', error);
+
+            alert(
+                'Sorry, we were unable to submit your request at this time. Please try again later.'
+            );
+        })
+        .finally(function () {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Request';
+        });
+    }
+</script>
+</body>
+</html>
